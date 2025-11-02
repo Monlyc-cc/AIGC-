@@ -2,9 +2,9 @@
 #include<vector>
 #include<map>
 using namespace std;
-vector<int> function(vector<int> nums, int target)
+vector<int> function(vector<int> &nums, int target)
 {
-    map<int,int>mp1; // 使用unordered_map代替map，平均查找时间O(1)
+    map<int,int>mp1; 
     vector<int> sum;
     // 单次遍历同时完成查找和插入
     for (int i = 0; i < nums.size(); i++)
