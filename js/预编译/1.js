@@ -1,6 +1,12 @@
 console.log(a);
-var a=1;
+console.log(b);
+var a;
+function b() { };
 
-var a
-console.log(a)
-a=1
+
+GO = {
+    a: undefined,
+    b: function () { }
+}
+console.log(GO.a);
+console.log(GO.b);
