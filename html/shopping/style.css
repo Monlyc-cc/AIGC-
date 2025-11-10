@@ -1,0 +1,73 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+ul li{
+    list-style:none; ;
+}
+.logo{
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+
+}
+.logo img{
+    width: 100%;
+}
+
+.logo,.nav{
+    display: inline-block;
+}
+.head
+{
+    height: 85px;
+    font-size: 0;
+    padding: 0,107,0,107;
+    display: flex;
+}
+.head_nav,.head_user{
+    display: inline-block;
+    width: 50%;
+    font-size: 21px;
+
+}
+.head_nav{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav ul
+{
+    display: flex;
+
+}
+.nav ul li
+{
+    margin-right: 42px;
+
+}
+
+
+.head_user{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding:21px;
+}
+.register{
+    width: 85px;
+    height: 100%;
+    background-color: #000;
+    border-radius: 5px 5px 5px 5px;
+    font-size: 21px;
+    color:#fff;
+}
+.login{
+    width: 85px;
+    height: 100%;
+    font-size: 21px;
+    border: none;
+    background-color:#fff;
+}
