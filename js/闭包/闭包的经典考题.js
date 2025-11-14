@@ -26,3 +26,15 @@ for (var i = 1; i < 6; i++) {
 for (let n = 0; n < arr.length; n++) {
     arr[n]();
 }
+var arr = [];
+for (let i = 1; i < 6; i++) {
+        arr.push(function () {
+            console.log(i);
+        })
+    }
+
+
+//run
+for (let n = 0; n < arr.length; n++) {
+    arr[n]();
+}
