@@ -1,12 +1,12 @@
-function bar() {
+function fn() {
     console.log(myName);
 }
-function foo() {
-    var myName = '小君'
+function fn2() {
+    var myName = '南北绿豆'
     bar()
 }
-var myName = '冯总'
-foo()
+var myName = '哈基米'
+f2()
 
 
 //outer字段指向自身外层作用域
