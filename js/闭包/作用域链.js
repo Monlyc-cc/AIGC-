@@ -3,10 +3,10 @@ function fn() {
 }
 function fn2() {
     var myName = '南北绿豆'
-    bar()
+    fn()
 }
 var myName = '哈基米'
-f2()
+fn2()
 
 
 //outer字段指向自身外层作用域
