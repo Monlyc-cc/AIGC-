@@ -1,30 +1,31 @@
-var isMonotonic = function (nums) {
-    if (nums.length < 2) {
-        return false;
-    } 
-    let y=0;
-    let x=0;
-    for(let i=0;i<nums.length-1;i++)
-    {
+//I             1
+//V             5
+//X             10
+//L             50
+//C             100
+//D             500
+//M             1000
 
-        x=nums[i+1]-nums[i];
-        if(x!=0)
-        {
-            if(y!=0)
-            {
-                if(Math.abs(y-x)>Math.max(Math.abs(y),Math.abs(x)))
-                {
-                    console.log(y,x)
-                    return false;
-                }
-            }
-            else
-            {
-                y=x;
-            }
-        }
+var romanToInt = function(s) {
+    let mq={
+        I:1,
+        V:5,
+        X:10,
+        L:50,
+        C:100,
+        D:500,
+        M:1000,
+    }  
+    let I_obj=new Set(['V','X'])
+    let X_obj=new Set(['L','C'])
+    let C_obj=new Set(['D','M'])
+    let ruler={
+        I:I_obj,
+        X:X_obj,
+        C:C_obj
     }
-return true;
+    for(let i of s)
+    {
+    }
+
 };
-nums=[1,2,3,3,3,3,3,3,5,5,5,5,9]
-console.log(isMonotonic(nums));

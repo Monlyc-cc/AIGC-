@@ -3,17 +3,18 @@ maxSlidingWindow = function (nums, k) {
     let length = nums.length;
     let res = [];
     let dque = [];
+    let index=0;
     for (let i = 0; i < length; i++) {
-        while (dque.length && nums[dque[dque.length - 1]] < nums[i]) {
+        while (dque.length>index&&nums[dque[dque.length - 1]] < nums[i]) {
             dque.pop();
         }
         dque.push(i);
         if (i > k -2) {
             // 减少去除超出窗口最大值的时间
-            while (dque[0] < i - k+1) {
-                dque.shift();
+            while (dque[index] < i - k+1) {
+                index+=1;
             }
-            res.push(nums[dque[0]]);
+            res.push(nums[dque[index]]);
         }
     }
     return res;

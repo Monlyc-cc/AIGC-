@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">提交</button>
+    <script>
+        let btn = document.getElementById('btn');
+        function handle(e) { //e 事件参数，默认存在，用来描述这个事件的事情
+            console.log('提交',this,e);
+        }
+
+        function debounce(fn, wait) {
+            var timer;
+            return function (...arg) {//鼠标每次点击触发的是我
+                let _this = this;
+                clearTimeout(timer);
+                //timer 是被window调用所以会改变内部this指向到全局
+                timer = setTimeout(function () {
+                    fn.call(_this, ...arg)
+                }, wait);
+            }
+        }
+        btn.addEventListener('click', debounce(handle, 1000))
+        // addeventlinster 固定会往被调用函数体中传入一个，“事件参数”
+
+        // 函数的this指向会变
+        //1. 利用箭头函数直接忽视this指向
+        //2. 利用强行保定。
+    </script>
+</body>
+
+</html>
