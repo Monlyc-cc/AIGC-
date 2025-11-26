@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单例弹框</title>
+    <style>
+        #module {
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid #000;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <button id='btn1'>open</button>
+    <button id="btn2">open2</button>
+    <button id='close'>close</button>
+    <script>
+        const Module = (function () {
+            let module=null;
+            return function () {
+                if (!module) {
+                    module = document.createElement('div');
+                    module.innerHTML = '我是一个全局弹框';
+                    module.id = 'module';
+                    module.style.display = 'none';
+                    document.body.appendChild(module);
+                }
+                return module;
+            }
+        })();
+        document.getElementById('btn1').addEventListener('click', function () {
+            const module = new Module();
+            module.style.display = 'block';
+        })
+        document.getElementById('btn2').addEventListener('click', function () {
+        })
+
+        document.getElementById('close').addEventListener('click', function () {
+        const module =new Module();
+        module.style.display='none';
+        })
+    </script>
+
+</body>
+
+</html>
