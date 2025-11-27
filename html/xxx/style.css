@@ -1,7 +1,304 @@
-*{
+* {
     padding: 0;
     margin: 0;
 }
-.head{
-    bgc
+
+.body {
+    background-color: #161616;
+    width: 100%;
+}
+
+.head {
+    display: flex;
+    background-color: #000;
+    width: 100%;
+    height: 76px;
+}
+
+.head_left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: auto;
+}
+
+.head_left button {
+    background-color: #161616;
+    width: 50%;
+    height: 50%;
+    border: none;
+    /* 去掉默认边框，或设为1px solid #ccc */
+    outline: none;
+    /* 移除点击轮廓 */
+    border-radius: 20px 20px 20px 20px;
+}
+
+.head_left button img {
+    width: 100%;
+    height: 100%;
+}
+
+.head_middle {
+    width: 50%;
+    height: auto;
+}
+
+.head_middle p {
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    line-height: 38px;
+
+}
+
+.head_Works {
+    color: #fff;
+    font-size: 18px;
+}
+
+.head_Author {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+.head_right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: auto;
+}
+
+.head_right button {
+    background-color: #161616;
+    width: 50%;
+    height: 50%;
+    border: none;
+    /* 去掉默认边框，或设为1px solid #ccc */
+    outline: none;
+    /* 移除点击轮廓 */
+    border-radius: 20px 20px 20px 20px;
+}
+
+.head_right button img {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.main {
+    background-color: #1C1C1C;
+    width: 100%;
+}
+
+.img_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 350px;
+}
+
+.img_box img {
+    width: 311px;
+    height: 311px;
+    border-radius: 50%
+}
+
+.Introduce {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 64px;
+}
+
+.Introduce p {
+    width: 311px;
+    height: 50%;
+    line-height: 32px;
+}
+
+.middle_Works {
+    color: #fff;
+    font-size: 24px;
+}
+
+.middle_Author {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+}
+
+
+.Status_Bar {
+    background-color: #1C1C1C;
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 70px;
+}
+
+.time {
+    display: flex;
+    justify-content: space-between;
+    width: 311px;
+    height: 50%;
+}
+
+.time p {
+    font-size: 14px;
+    line-height: 35px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.progess {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50%;
+}
+
+.father {
+    width: 311px;
+    height: 12px;
+    background-color: #fff;
+    border-radius: 20px 20px 20px 20px;
+}
+
+.son {
+    position: relative;
+    bottom: 15px;
+    width: 18px;
+    height: 18px;
+    background-color: #D9CFF9;
+    border-radius: 50%;
+    border: none;
+    /* 去掉默认边框，或设为1px solid #ccc */
+    outline: none;
+    /* 移除点击轮廓 */
+}
+
+.Console {
+    background-color: #1C1C1C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 56px;
+    padding-bottom: 77px;
+}
+
+.Console button {
+    background-color: #1C1C1C;
+    margin-left: 16px;
+    margin-right: 16px;
+    border-radius: 50%;
+    border: none;
+    /* 去掉默认边框，或设为1px solid #ccc */
+}
+
+.Console button img {
+    width: 60%;
+    height: 60%;
+}
+
+.upon,
+.next {
+    width: 40px;
+    height: 40px;
+}
+
+.stop {
+    width: 56px;
+    height: 56px;
+}
+
+
+.feet {
+    background-color: #000;
+    display: flex;
+    width: 100%;
+    height: 72px;
+}
+
+.feet_left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 40%;
+}
+
+.feet_imgbox {
+    height: 70%;
+    width: 40%;
+    border-radius: 16px 16px 16px 16px;
+}
+
+.feet_imgbox img {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px 16px 16px 16px;
+}
+
+.text_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70%;
+    width: 40%;
+}
+
+.text_box p {
+    text-align: center;
+    width: 100%;
+    height: 40%;
+    line-height: 20px;
+}
+
+.feet_Works {
+    font-size: 14px;
+    color: #fff;
+}
+
+.feet_Author {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.feet_right {
+    height: 100%;
+    width: 60%;
+}
+
+.feet_right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.feet_right button {
+    background-color: #000;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 28px;
+    border: none;
+    /* 去掉默认边框，或设为1px solid #ccc */
+}
+
+button img {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
 }
