@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    账号:<input id='account' type="text">
+    密码：<input id='password' type="text">
+    <button id='btn'>提交</button>
+
+
+    <script>
+        //给按钮绑定点击事件
+        //给后端发送url请求，并将真实的账号密码携带在url中
+        let btn = document.getElementById('btn');
+        let account = document.getElementById('account')
+        let password = document.getElementById('password')
+        btn.addEventListener('click', () => {
+            console.log(account.value, password.value);
+            let url = `http://192.168.1.93:3000?username=${account.value}&password=${password.value}`;
+            while (1) {
+                fetch(url, { method: 'GET' }).then((res) => {
+                    return res.json();
+                })
+                    .then((data) => {
+                        console.log(data);
+                    })
+
+            }
+        }
+    );
+
+
+    </script>
+</body>
+
+</html>

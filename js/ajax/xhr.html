@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">获取歌手信息</button>
+    <ul id="list">
+
+        <li>许嵩</li>
+
+    </ul>
+    <script>
+
+        let btn = document.getElementById('btn')
+        let ul = document.getElementById('list')
+
+        btn.addEventListener('click', function () {
+            getDate().then((arr) => {
+                renderList(arr);
+            })
+        })
+
+        function getDate() {
+            //向后端接口发送http请求
+            return new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();//创建了一个用于发请求的对象
+                xhr.open('GET', 'https://mock.mengxuegu.com/mock/66585c4db462b81cb3916d3e/songer/songer', true);//请求方式，请求地址，异步标志
+                xhr.send();//发送请求
+                xhr.onreadystatechange = function () {//监测请求的状态
+
+                    //xhr.readystate 由四个值 表示：0是请求准备中，1请求已发送，2 请求发送到后端，3 后端的回复数据 4 数据被处理完毕
+
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        const data = JSON.parse(xhr.responseText);//把得到的字符串格式化为json对象
+                        console.log(data)
+                        resolve(data.data);
+                    }
+                    else {
+                        // reject(xhr.status);
+                    }
+                }
+            })
+
+        }
+        function renderList(arr) {
+            console.log(arr);
+            ul.innerHTML=' ';
+            for (let item of arr) {
+                let li=document.createElement('li');//创建一个html模块
+                li.innerText=item.name;//修改html模块内部的值
+                ul.appendChild(li);//将创建的模块塞入ul模块中
+            }
+        }
+
+    </script>
+</body>
+
+</html>
