@@ -24,14 +24,11 @@ Function.prototype.myCall=function(context,...args)
     delete context[fn]
     return res;
 
+
 }
-console.log(obj.foo())
-console.log(foo.call(obj,1,2))
-console.log(foo.myCall(obj,1,2))
-console.log(obj)
-console.log(foo.call())
-console.log(foo.myCall())
-console.log(foo.call(obj))
+foo.myCall([],1,1)
+
+
 
 
 
