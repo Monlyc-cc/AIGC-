@@ -1,0 +1,5 @@
+console.log(Number("xx"))
+console.log(Number("x"))
+console.log("x"=="xx")
+console.log([]==![])
+console.log(!Number(([].toString())))

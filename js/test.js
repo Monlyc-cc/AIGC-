@@ -1,9 +1,10 @@
-var a = 0;
-var obj =
+function foo()
 {
-    a: 1,
-    fn: function fn() {
-        console.log(this.a);
-    }
+    console.log("hello")
 }
-obj.fn()
+foo();
+
+foo=new Function('console.log("hello");')
+foo()
+
+ function foo(){}  =>  foo=new Function()  

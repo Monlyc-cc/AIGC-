@@ -1,0 +1,372 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+}
+
+.head {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px 0 16px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.head .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    line-height: 28px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.trun_back {
+    width: 28px;
+    height: 100%;
+    border: none;
+    /* 去掉默认边框，或设为1px solid #ccc */
+    outline: none;
+}
+
+.trun_back img {
+    width: 100%;
+    height: 100%;
+}
+
+.myshop {
+    height: 50%;
+    border: none;
+    /* 去掉默认边框，或设为1px solid #ccc */
+    outline: none;
+}
+
+.myshop img {
+    width: 100%;
+    height: 100%;
+}
+
+.main {
+    background-color: #F3F4F6;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 56px;
+
+}
+
+.main div {
+    box-sizing: border-box;
+    margin-bottom: 16px;
+}
+
+.serach {
+    display: flex;
+    height: 40px;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+}
+
+.serach img {
+    width: 10%;
+    height: 50%;
+}
+
+.serach input {
+    width: 90%;
+    height: 50%;
+    border: none;
+    /* 去掉默认边框，或设为1px solid #ccc */
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #6B7280;
+}
+
+
+
+
+
+
+.index {
+    align-self: flex-end;
+    max-width: 100%;
+    width: 95%;
+    height: 37px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: none;
+    /* Firefox */
+
+}
+
+.index button {
+    margin-right: 12px;
+    height: 100%;
+    width: 88px;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    font-weight: 400;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+.index .flag {
+    background-color: #000;
+    color: #fff;
+}
+
+.ad {
+    width: 90%;
+    height: 180px;
+    background-image: url("./img/解释\ padding.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.ad div {
+    width: 8%;
+    height: 9px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ad button {
+    height: 9px;
+    width: 9px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5) rgba(0, 0, 0, 0.001);
+    box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(0, 0, 0, 0);
+}
+
+.ad .flag {
+    background: #FFFFFF rgba(0, 0, 0, 0.001);
+    border: 2px solid rgba(0, 0, 0, 0);
+}
+
+.goods {
+    width: 90%;
+    height: 310px;
+}
+
+.goods .title {
+    color: #000000;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.shelf {
+    max-width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: none;
+}
+
+.shelf div {
+    height: 100%;
+    width: 50%;
+    padding: 12px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.shelf img {
+    width: 100%;
+    height: 150px;
+}
+
+.shelf .name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+    line-height: 20px;
+    text-align: left;
+}
+
+.shelf .price_font {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    color: #000000;
+    text-align: left;
+}
+
+.shelf .sales {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: left;
+    color: #6B7280;
+}
+
+
+.content {
+    width: 90%;
+}
+
+.content .title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #000000;
+    line-height: 28px;
+    text-align: left;
+    margin-bottom: 12px;
+}
+
+.content .table {
+    max-width: 100%;
+    height: 80%;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: none;
+}
+.table div{
+    margin: 0;
+    padding: 0;
+}
+.table .card {
+    height: 100%;
+    display: inline-block;
+    width: 80%;
+    white-space: normal;
+}
+
+.table p {
+    word-wrap: break-word;
+    /* 长文本/URL换行 */
+    word-break: break-all;
+    /* 可选：任意字符处换行 */
+}
+
+.card .man {
+    display: flex;
+    width: 100%;
+    height: 20%;
+    margin-bottom: 12px;
+}
+
+.man .imgbox {
+    width: 20%;
+    background-color: #000;
+    border-radius: 50%;
+}
+.imgbox img
+{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.man .name {
+    width: 80%;
+    padding-left: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+    line-height: 20px;
+}
+
+.content .infromation{
+    width:100%;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.infromation img
+{
+    width: 14px;
+    height: 14px;
+    margin-right: 5px;
+}
+.infromation p{
+    font-weight: 400;
+    font-size: 14px;
+    color: #4B5563;
+    line-height: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.foot {
+    width: 100%;
+    height: 56px;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+
+
+}
+
+.foot div {
+    background-color: #fff;
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.foot button {
+    width: 24px;
+    height: 24px;
+    border: none;
+    /* 去掉默认边框，或设为1px solid #ccc */
+    outline: none;
+}
+.foot img
+{
+    width: 100%;
+    height: 100%;
+}

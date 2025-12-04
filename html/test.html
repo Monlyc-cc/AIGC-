@@ -1,0 +1,38 @@
+<style>
+    .parent {
+        white-space: nowrap;
+        /* 父容器强制不换行（子元素排列不换行） */
+        overflow-x: auto;
+        /* 父容器横向滚动（可选） */
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+
+    .child {
+        display: inline-block;
+        /* 子容器横向排列（不换行） */
+        width: 200px;
+        /* 子容器固定宽度 */
+        margin-right: 10px;
+        background: #f5f5f5;
+        /* 关键：重置子容器内文本的换行规则 */
+        white-space: normal;
+        /* 允许子容器内文本换行 */
+    }
+
+    .child p {
+        word-wrap: break-word;
+        /* 长文本/URL换行 */
+        word-break: break-all;
+        /* 可选：任意字符处换行 */
+    }
+</style>
+
+<div class="parent">
+    <div class="child">
+        <p>这是一段很长的文本，子容器重置了white-space后可以正常换行，父容器的子元素仍横向排列不换行。</p>
+    </div>
+    <div class="child">
+        <p>测试长URL：https://www.example.com/this-is-a-very-long-url-that-needs-to-be-broken-into-multiple-lines</p>
+    </div>
+</div>
