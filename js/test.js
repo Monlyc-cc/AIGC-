@@ -1,10 +1,10 @@
-function foo()
-{
-    console.log("hello")
+function foo() {
+    let a = 0;
+    function bar() {
+        console.log(a);
+    }
+    return bar
 }
-foo();
 
-foo=new Function('console.log("hello");')
-foo()
-
- function foo(){}  =>  foo=new Function()  
+let bar = foo();
+bar()
