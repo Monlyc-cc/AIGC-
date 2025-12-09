@@ -1,0 +1,13 @@
+.movie_list{
+    width: 100%;
+
+}
+.list{
+    overflow-x: scroll;
+    display: flex;
+
+}
+.nav{
+    display: flex;
+    justify-content: space-between;
+}

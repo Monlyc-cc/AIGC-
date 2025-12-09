@@ -1,0 +1,36 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.root {
+    display: flex;
+    background-color: #dbcdcd;
+    max-width: 900px;
+    height: 300px;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.head {
+    flex-shrink: 1;
+    width: 200px;
+    height: 50%;
+    background-color: red;
+}
+
+.main {
+    flex-shrink: 2;
+    flex-grow: 1;
+    width: 200px;
+    height: 50%;
+    background-color: green;
+}
+
+.foot {
+    flex-shrink: 4;
+    width: 200px;
+    height: 50%;
+    background-color: blue;
+}

@@ -27,3 +27,7 @@ function shallowCopy(obj) {
 const newObj = shallowCopy(obj)
 obj.like.m = '篮球'
 console.log(newObj, obj);
+let arr=[1,2,3,obj]
+let arr2= shallowCopy(arr)
+console.log(arr instanceof Array)
+console.log(arr2 instanceof Array)

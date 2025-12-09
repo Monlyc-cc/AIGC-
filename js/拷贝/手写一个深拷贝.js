@@ -5,33 +5,33 @@ function clonFunction(newObj, obj, key) {
 
 
 function deepCopy(obj) {
-    const O = structuredClone(obj)
-    copyFunction(O,obj);
-}
-function copyFunction(O,obj) {
+    let O = {};
     for (let key in obj) {
         if (obj.hasOwnProperty(key)) {
-            if (obj[key] instanceof Function) {
-                //将函数重新添加进拷贝对象中
-                O[key] = obj[key];
+            if (obj[key] instanceof Object && !obj[key] instanceof Function) {
+                O[key] = deepCopy(obj[key]);
             }
-            if (obj[key] instanceof Object) {
-                // 递归进入对象中,将对象内部缺失
-                copyFunction(O[key],obj[key]);
+            else {
+                O[key] = obj[key]
             }
         }
     }
-    return
+    return O;
 }
+
 
 const obj = {
     name: '俊杰',
     age: 18,
     like: {
-        n: {n:'洗脚'},
+        n: { n: '洗脚' },
         m: '台球'
     },
-    x:null,
+    x: null,
+    y:Symbol(1)
 }
-const newObj=deepCopy(obj)
+const newObj = deepCopy(obj)
+obj.x = "xxx";
 console.log(obj)
+console.log(newObj)
+console.log(obj.y==newObj.y)
