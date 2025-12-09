@@ -6,5 +6,5 @@
 5. eslint.config.js vite 创建内置的代码格式校验工具 
 6. index.html 项目唯一的页面
 7. package-lock 记录项目中每一个依赖从哪里下载的
-8. package 项目的说明书
+8. package 记录项目中的依赖
 9. vite.config vite这个构建工具给我们提供的一个配置文件
