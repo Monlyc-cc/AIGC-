@@ -6,22 +6,24 @@ export default function App() {
 
   function fn() {
     console.log(timer)
-    return () => {
-      clearTimeout(timer)
-      console.log("clear timeout:" + (timer))
-      timer = setTimeout(() => {
-        console.log("timeout:"+timer)
-        setNum(num + 1);
-      }, 1000)
-      console.log("create timeout:" + (timer))
 
-    }
+    
+    clearTimeout(timer)
+    console.log("clear timeout:" + (timer))
+
+
+    timer = setTimeout(() => {
+      console.log("timeout:" + timer)
+      setNum(num + 1);
+    }, 1000)
+    console.log("create timeout:" + (timer))
 
   }
+
   return (
     <div>
       <div className="hhh">功德值{num}</div>
-      <button onClick={fn()}>功德+1</button>
+      <button onClick={fn}>功德+1</button>
     </div>
   )
 }

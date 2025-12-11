@@ -1,34 +1,9 @@
-async function getDate(url) {
-    let arr = [];
-    let obj;
-    await fetch(url,
-        { method: 'GET' },)
-        .then((res) => {
-            return res.json()
-        }
-        )
-        .then((data) => {
-            for (let i of data.movieList) {
-                obj = {};
-                obj.img = i.img;
-                obj.name = i.nm;
-                if(i.sc)
-                {
-                obj.sc = i.sc;
-                }
-                else
-                {
-                    obj.sc = "暂无评分";
-                }
-                arr.push(obj);
-            }
-        })
-    return arr;
+let i=10;
+let timer;
+while(i--)
+{
+    timer=setTimeout(() => {
+        
+    }, 1000);
+    console.log(timer);
 }
-/*
-
-*/
-let url = "https://apis.netstart.cn/maoyan/index/movieOnInfoList"
-getDate(url).then((arr)=>{
-    console.log(arr);
-})
