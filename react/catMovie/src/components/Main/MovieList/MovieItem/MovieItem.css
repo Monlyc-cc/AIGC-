@@ -7,6 +7,12 @@
     height: 150px;
     overflow: hidden;
 }
+.item_name{
+    width: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
 .item_img img{
     height: 100%;
 }

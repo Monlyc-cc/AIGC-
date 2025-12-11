@@ -1,4 +1,6 @@
-async function getDate(url) {
+import React from 'react'
+
+export default async function getDate(url) {
     let arr = [];
     let obj;
     await fetch(url,
@@ -11,24 +13,20 @@ async function getDate(url) {
             for (let i of data.movieList) {
                 obj = {};
                 obj.img = i.img;
-                obj.name = i.nm;
-                if(i.sc)
-                {
-                obj.sc = i.sc;
+                obj.nm = i.nm;
+                if (i.sc) {
+                    obj.sc = i.sc;
                 }
-                else
-                {
+                else {
                     obj.sc = "暂无评分";
                 }
                 arr.push(obj);
+                console.log(obj);
             }
         })
     return arr;
 }
 /*
-
+ 
 */
-let url = "https://apis.netstart.cn/maoyan/index/movieOnInfoList"
-getDate(url).then((arr)=>{
-    console.log(arr);
-})
+
