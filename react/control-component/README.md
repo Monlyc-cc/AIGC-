@@ -14,7 +14,8 @@ json-server db.json
 http://localhost:3000/data/1    // 1 为被删除的数据的id
 
 - 搜索
-http://localhost:3000/data/q?=xxx   // xxx 用户在输入的内容
+http://localhost:3000/data/？q=xxx   // xxx 用户在输入的内容
 
 - 获取完整列表数据
 http://localhost:3000/data
+htmlfor={id}//绑定输入框
