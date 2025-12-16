@@ -1,0 +1,49 @@
+.login {
+    background-color: #88d2e7;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    width: 400px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.item {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.item label {
+    display: inline-block;
+    text-align: end;
+    width: 60px;
+}
+
+.item input {
+    flex: 1;
+    font-size: 20px;
+    padding: 5px 10px;
+}
+
+.item button {
+    flex: 0 0 300px;
+    /* （放大倍率，缩小倍率，固定长度）*/
+    height: 30px;
+    background-color: #3bd527;
+    color: #fff;
+    border: none;
+    cursor: pointer
+}

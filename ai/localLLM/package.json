@@ -1,5 +1,5 @@
 {
-  "name": "ai_streaming",
+  "name": "localllm",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "dompurify": "^3.3.1",
-    "openai": "^6.10.0",
+    "ollama": "^0.6.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-markdown": "^10.1.0"

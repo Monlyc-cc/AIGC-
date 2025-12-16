@@ -14,7 +14,7 @@ if(arr)
 //模拟这个过程
 console.log([1]==2)
 //1 执行valueOf() 
-console.log(arr.valueOf())
+
 console.log(arr.toString())
 console.log(typeof(arr.toString()))
 

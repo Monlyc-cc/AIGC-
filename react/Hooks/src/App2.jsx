@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 export default function App2() {
-    const [count, setCount] = useState(0)
+    const [count, setCount] = useState(0)//setCount的意义不是改变count的值，而是产生了新的渲染任务该任务里count值是被修改的值
     const [list, setList] = useState([])
     //useEffect 副作用函数 一定要放一个函数
     useEffect(() => {
@@ -9,6 +9,8 @@ export default function App2() {
             console.log("xxx")
 
             setCount(count + 1)
+
+
         }, 1000)
     }, [])
     useEffect(() => {
