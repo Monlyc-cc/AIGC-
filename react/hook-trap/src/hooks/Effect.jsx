@@ -23,6 +23,7 @@ export default function Effect() {
         });
     }
     useEffect(() => {
+        //当组件渲染完成时，useEffect才会触发
         console.log(1)
         const timer=setInterval(()=>{
             setNum((pre)=>{

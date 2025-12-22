@@ -14,6 +14,7 @@ function reducer(state,action){
 }
 
 export default function Trap() {
+    //解决闭包陷阱
     // const [count, setCount] = useState(0)
     const [count,dispatch]=useReducer(reducer,0)
     // useEffect(() => {
