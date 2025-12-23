@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>数据库</h1>
+    <div class="box">
+        <input type="text" placeholder="请输入账号" class="account">
+        <input type="text" placeholder="请输入密码" class="password">
+        <button id="btn">登录</button>
+    </div>
+    <script>
+        const btn = document.getElementById('btn')
+        console.log("hhhhhhhhhhh");
+        
+        btn.addEventListener('click',async() => {
+            console.log("hhhhh");
+            const account = document.querySelector('.account').value
+            const password = document.querySelector('.password').value
+            console.log(account,password)
+            if (!(account&&password)) {
+                alert("请输入账户或密码")
+                return;
+            }
+            const res= await fetch(`http://localhost:3000/login?name=${account}&password=${password}`)
+            const data=await res.json()
+            console.log(data)
+        })
+    </script>
+</body>
+
+</html>
