@@ -3,20 +3,13 @@
 js没有办法直接读取操作系统的文件
 # node.js 与 window.js 的不同
 
-- 模块化语法
+# 模块化语法 （定义模块的语法）
 1. commonJS 规范 node.js抛出方法
     - module.requires={}
-    - exports.fn=()=>{} 
-        //exports 是一个已经存在的对象，并且默认被抛出
-        //往exports上添加属性
-    - module.exports=()=>{}   
-        //优先级比exprots更高
-
-
+    - exports.fn=()=>{} //exports 是一个已经存在的对象，并且默认被抛出//往exports上添加属性
+    - module.exports=()=>{}    //优先级比exprots更高
 2. ESModule 规范  -- es6以后js官方更新了自己的抛出规范，node.js也兼容
-
 node 有的时候， es6还没有呢。所以module抛出方法与es6不同
-
 # 解构： 
 1.数组的解构
 2.对象的结构
@@ -26,3 +19,11 @@ process.stdin.on('data',(e)=>{
     console.log(e)
 })
 
+
+
+# 内置模块 （）
+1. global （node 全局）， window （浏览器全局）
+2. path 路径处理相关的模块
+3. fs   文件处理相关的模块： 处理文件的创建，修改，删除，移动等等
+  - 文件路径的大坑， 不同终端的执行结果下，相对路径的寻找方式是不同的。
+  - 解决方式： 利用 __dirname 获得当前文件夹的路径，然后拼接想要访问的路径
