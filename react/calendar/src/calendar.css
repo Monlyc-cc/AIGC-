@@ -1,0 +1,39 @@
+.calendar {
+    border: 1px solid #aaa;
+    width: 300px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding:auto;
+}
+
+.header {
+    display: flex;
+    height: 40px;
+    justify-content:space-around;
+    align-items: center;
+    /* 子容器垂直居中，取消默认继承高度*/
+}
+
+.days {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.day,
+.empty {
+    width: calc(100%/7);
+    text-align: center;
+    height: 32px
+}
+
+.day:hover,.selected {
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+
+.empty {
+    color: #aaa;
+}
