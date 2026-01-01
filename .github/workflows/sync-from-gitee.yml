@@ -1,0 +1,30 @@
+name: Sync from Gitee to GitHub
+# 触发条件：1. 手动触发 2. 每天定时同步（可选）
+on:
+  workflow_dispatch:  # 允许手动点击触发
+  schedule:
+    - cron: '0 */1 * * *'  # 每 1 小时同步一次，可改频率（如 */30 每30分钟）
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      # 步骤1：配置 SSH 访问 Gitee
+      - name: Configure SSH for Gitee
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.GITEE_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan gitee.com >> ~/.ssh/known_hosts  # 信任 Gitee 主机
+
+      # 步骤2：克隆 Gitee 仓库（完整历史）
+      - name: Clone Gitee repo
+        run: |
+          git clone --mirror git@gitee.com:${{ secrets.GITEE_USERNAME }}/你的仓库名.git gitee-mirror
+          cd gitee-mirror
+
+      # 步骤3：推送到 GitHub 仓库
+      - name: Push to GitHub
+        run: |
+          cd gitee-mirror
+          git push --mirror git@github.com:你的GitHub用户名/你的仓库名.git

@@ -1,1 +1,3 @@
-console.log('-2'-'0')
+s='a'
+s+=s
+console.log(s)
