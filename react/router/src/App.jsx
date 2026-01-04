@@ -4,6 +4,8 @@ import Home from './views/home/Home.jsx'
 import Class from './views/class/Class.jsx'
 import Leetcode from './views/leetcode/Leetcode.jsx'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+
+
 export default function App() {
     return (
         <div>
