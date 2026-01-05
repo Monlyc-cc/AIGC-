@@ -7,3 +7,8 @@
 
  2. 样式初始化
  
+ 3. less.js
+ - 使用less的方法写css
+ 
+ ## npm i 作用 
+ 默认会将pack.json中记录的依赖全部安装
