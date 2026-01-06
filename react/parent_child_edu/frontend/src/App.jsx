@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { BrowserRouter, Routes, Route, Navigate, Router } from 'react-router-dom'
 import './utils/rem.js'
 import Login from './pages/Login.jsx'
-
+import Register from './pages/Register.jsx'
 import './styles/app.less'
 const AuthPage = () => {
-  const [flag, setFlag] = useState(false)
+  const [flag, setFlag] = useState(true)
   return (
     <div className='app-root'>
       <div className="cartoon-bg"></div>
@@ -17,17 +17,39 @@ const AuthPage = () => {
             <p className="auth-subtitle">专注于 0-12 亲子教育</p>
           </div>
           <div className="slider-container">
-            <div className={`slider-button ${flag ? 'slider-button--right' : ''}`}></div>
+            <div className={`slider-button ${flag ? '' : 'slider-button--right'}`}></div>
             <div className="slider-tabs">
-              <button className='slider-tab' style={{ 'color': flag ? '#666' : '#fff' }} onClick={() => {
-                setFlag(false)
-              }}>登录</button>
               <button className='slider-tab' style={{ 'color': flag ? '#fff' : '#666' }} onClick={() => {
                 setFlag(true)
+              }}>登录</button>
+              <button className='slider-tab' style={{ 'color': flag ? '#666' : '#fff' }} onClick={() => {
+                setFlag(false)
               }}>注册</button>
             </div>
           </div>
-
+          {/*登录模块*/}
+          {flag ? <Login /> : <Register />}
+          <div className="social-login">
+            <div className="divider">
+              <div className="divider-line"></div>
+              <div className="divider-test">第三方账号登录</div>
+              <div className="divider-line"></div>
+            </div>
+            <div className="oauth-buttons">
+              <button className="oauth-button__btn">
+                <i className='iconfont icon-weixin'></i>
+              </button>
+              <button className="oauth-button__btn">
+                <i className='iconfont icon-pingguo'></i>
+              </button>
+              <button className="oauth-button__btn">
+                <i className='iconfont icon-QQ'></i>
+              </button>
+            </div>
+          </div>
+          <div className="auth-footnote">
+            <p>表示您同意<a href="#">《用户协议》</a>和<a href="#">《隐私政策》</a></p>
+          </div>
         </div>
       </div>
     </div>
