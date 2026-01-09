@@ -2,12 +2,13 @@
  * @param {number[]} nums
  * @return {number}
  */
-var maxSubArray = function(nums) {
-    if(nums.length<2)
-    {
-        return nums[0]
+var maxSubArray = function (nums) {
+    let dp = 0;
+    let max = nums[0];
+    for (let i = 0; i < nums.length; i++) {
+        dp=Math.max(nums[i]+dp,nums[i])
+        max=Math.max(dp,max)
     }
-    let left;
-    let right;
-    return Math.max(maxSubArray(left))
+    return max
 };
+

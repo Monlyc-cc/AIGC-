@@ -1,41 +1,70 @@
 import React, { useState } from 'react'
 import '../styles/login.less'
-import {Toast}from 'antd-mobile'
+import { Toast } from 'antd-mobile'
+import axios from '../http'
+import { data } from 'react-router-dom'
 export default function login() {
   const [loading, setLoding] = useState(false)
-  const [phone, setPhone] = useState('')
-  const [password, setPassword] = useState('')
+  const [account, setAccount] = useState('18970173593')
+  const [password, setPassword] = useState('123')
 
-  const handleSubmit =async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()//阻止默认行为
     setLoding(true)
     //校验账号格式
     const phonereg = /^1[3-9]\d{9}$/
     const emailreg = /^[1-9]\d{4,10}@qq\.com$/
- 
-    if (!phonereg.test(phone) && !emailreg.test(phone)) {
+
+    if (!phonereg.test(account) && !emailreg.test(account)) {
       Toast.show({
-        icon:'fail',
-        content:'请输入正确的账号'
+        icon: 'fail',
+        content: '请输入正确的账号'
       })
+      setLoding(false)
+      return;
     }
 
-    // 像后端发请求
-    const url='http://localhost:3000/auth/login';
-    const res=await fetch(url,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},// 请求头是对象
-      body:JSON.stringify({phone,password}) //请求体必须是字符串
+    Toast.show({
+      icon: 'loading',
+      content: '登录中'
     })
-    const data=await res.json()
+    // 像后端发请求
+    const url = '/api/auth/login';
+    
+      const res = await axios.post(url,{
+      account,
+      password
+    })
+    const data=res.data;
     console.log(data)
+    // const res = await fetch(url, {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },// 请求头是对象
+    //   body: JSON.stringify({ account, password }) //请求体必须是字符串
+    // })
+    // const data = await res.json()
+    console.log(data)
+
+    if (data.token) {
+      Toast.show({
+        icon: 'success',
+        content: '登录成功'
+      })
+    }
+    else {
+      Toast.show({
+        icon: 'fail',
+        content: '账户或密码错误'
+      })
+    }
+    setLoding(false)
   }
   return (
     <form className='auth-form' onSubmit={handleSubmit} >
       <div className="auth-form__group">
         <i className='iconfont icon-zhanghao'></i>
-        <input type="tel" value={phone} placeholder='请输入手机号或邮箱' className='auth-form__input' onChange={(e) => {
-          setPhone(e.target.value)
+        <input type="tel" value={account} placeholder='请输入手机号或邮箱' className='auth-form__input' onChange={(e) => {
+          setAccount(e.target.value)
         }} />
       </div>
       <div className="auth-form__group">

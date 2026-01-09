@@ -2,6 +2,7 @@ const Koa = require('koa')
 const Router = require('koa-router')
 const bodyParser = require('koa-bodyparser')
 const authRouters = require('./routes/authRouter.js')
+const cors = require('@koa/cors');
 // 创建koa实例对象
 const app = new Koa()
 
@@ -23,7 +24,12 @@ router.get('/test', (ctx) => {
 
 //让app 讲router中定义的回调函数 全都use掉
 
-app.use(bodyParser())
+app.use(cors({
+    origin() {
+        return "http://localhost:5173";
+        },
+    }))
+    .use(bodyParser())
     .use(router.routes(), router.allowedMethods())
     .use(authRouters.routes(), authRouters.allowedMethods())
 
