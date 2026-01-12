@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import '../styles/login.less'
 import { Toast } from 'antd-mobile'
 import axios from '../http'
-import { data } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 export default function login() {
   const [loading, setLoding] = useState(false)
   const [account, setAccount] = useState('18970173593')
   const [password, setPassword] = useState('123')
-
+  const navigate=useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault()//阻止默认行为
     setLoding(true)
@@ -28,6 +28,7 @@ export default function login() {
       icon: 'loading',
       content: '登录中'
     })
+
     // 像后端发请求
     const url = '/api/auth/login';
     
@@ -35,15 +36,16 @@ export default function login() {
       account,
       password
     })
-    const data=res.data;
+    const data=res .data;
     console.log(data)
+    localStorage.setItem('token',data.token)
+
     // const res = await fetch(url, {
     //   method: 'POST',
     //   headers: { 'Content-Type': 'application/json' },// 请求头是对象
     //   body: JSON.stringify({ account, password }) //请求体必须是字符串
     // })
     // const data = await res.json()
-    console.log(data)
 
     if (data.token) {
       Toast.show({
@@ -58,6 +60,8 @@ export default function login() {
       })
     }
     setLoding(false)
+    navigate('/home')
+
   }
   return (
     <form className='auth-form' onSubmit={handleSubmit} >

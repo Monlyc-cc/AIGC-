@@ -1,7 +1,7 @@
 import { Toast } from "antd-mobile";
 import axios from "axios";
 
-axios.timeout = 5000 // 超时
+axios.timeout = 5000 // 超时时间
 axios.defaults.baseURL = 'http://localhost:3000' //配置axios默认基础路径
 axios.defaults.headers.post['Content-Type'] = 'application/json' //设置axios默认请求头
 
@@ -16,17 +16,21 @@ axios.interceptors.request.use(request => {
 })
 
 //设置 响应 拦截
-axios.interceptors.response.use((config) => {
+axios.interceptors.response.use((res) => {
     // 判断是否发生逻辑性错误
-    if (config.response.data.code !== 1) {
+    console.log(res);
+
+    if (res.data.code != 1) {
+        console.log(res.data.code)
         Toast.show(
             {
                 icon: 'fail',
-                content: config.response.data.message
+                content: res.data.message
             }
         )
     }
-    return config.response;
+
+    return res;
 }, (err) => {
     //拦截程序性错误
 
@@ -35,10 +39,18 @@ axios.interceptors.response.use((config) => {
         //此时后端存在程序性错误
         Toast.show({
             icon: 'fail',
-            content: err.response.data.message
+            content: err.data.message
         })
-        return Promise.reject(response)
+        if (res.status == 416) {
+            // 没有权限
+            //重定向去到登录页面
+            setTimeout(() => {
+                window.location.href = '/login'
+            },2000)
+        }
     }
+    return Promise.reject(err)
+
 })
 
 export default axios;

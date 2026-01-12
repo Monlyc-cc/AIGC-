@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route, Navigate, Router } from 'react-router-dom
 import './utils/rem.js'
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
+import Home from './pages/Home.jsx'
+
 import './styles/app.less'
 const AuthPage = () => {
   const [flag, setFlag] = useState(true)
@@ -59,7 +61,8 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Navigate to={'/login'} />}></Route>
+        <Route path='/home' element={<Home />}></Route>
+
         <Route path='/login' element={<AuthPage />}></Route>
       </Routes>
     </BrowserRouter>

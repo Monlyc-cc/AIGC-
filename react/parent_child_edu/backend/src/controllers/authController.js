@@ -5,6 +5,7 @@ async function login(ctx) {
     console.log('login请求成功')
     //解析请求体中的账号密码
     const { account, password } = ctx.request.body
+    
     //api不一定是自己人调用，可能是外人调用，所以后端需要验证数据的正确性
     if (!account || !password) {
         ctx.status = 400;  //设置http的状态码 400前端错误
@@ -24,6 +25,8 @@ async function login(ctx) {
     }
     //去数据库中查询是否存在相同的账号密码
     const res= await findUserByPhone(account)
+    console.log(account,password);
+    
     console.log(res)
     if(!res)
     {
@@ -47,8 +50,9 @@ async function login(ctx) {
 
     
     //生成一个token
-    const token = jwt.sign({id:res.id,phone:res.account }, 'shhhhh',{expiresIn:'7d'});
+    const token = jwt.sign({id:res.id,account:res.account }, 'shhhhh',{expiresIn:'7d'});
     ctx.body ={
+        code:1,
         message:'登录成功',
         token,
         user:{

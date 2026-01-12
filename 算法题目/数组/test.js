@@ -1,1 +1,1 @@
-console.log(1/0)
+console.log('abvc'[2])
