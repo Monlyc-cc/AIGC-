@@ -3,9 +3,11 @@ import { BrowserRouter, Routes, Route, Navigate, Router } from 'react-router-dom
 import './utils/rem.js'
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
-import Home from './pages/Home.jsx'
 import ResetPassword from './pages/ResetPassword.jsx'
-
+import Layout from './pages/Layout.jsx'
+import Home from './pages/Home.jsx'
+import AI from './pages/AI.jsx'
+import Mine from './pages/Mine.jsx'
 import './styles/app.less'
 const AuthPage = () => {
   const [flag, setFlag] = useState(true)
@@ -72,13 +74,15 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='' element={<Navigate to='/login' replace />}></Route>
-        <Route path='/home' element={<Home />}></Route>
-        <Route path='/login' element={<AuthPage />}></Route>
-        <Route path='/RsetPassword' element={<ResetPassword />}></Route>
-
-
-
+        <Route path='' element={<Navigate to='layout' replace />}></Route>
+        <Route path='login' element={<AuthPage />}></Route>
+        <Route path='RsetPassword' element={<ResetPassword />}></Route>
+        <Route path='layout' element={<Layout />}>
+          <Route path='' element={<Navigate to='home' />}></Route>
+          <Route path='home' element={<Home />}></Route>
+          <Route path='ai' element={<AI />}></Route>
+          <Route path='mine' element={<Mine />}></Route>
+        </Route>
       </Routes>
     </BrowserRouter>
 
