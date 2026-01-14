@@ -18,7 +18,6 @@ axios.interceptors.request.use(request => {
 //设置 响应 拦截
 axios.interceptors.response.use((res) => {
     // 判断是否发生逻辑性错误
-    console.log(res);
 
     if (res.data.code != 1) {
         console.log(res.data.code)
@@ -39,7 +38,7 @@ axios.interceptors.response.use((res) => {
         //此时后端存在程序性错误
         Toast.show({
             icon: 'fail',
-            content: err.data.message
+            content: err.response.data.message
         })
         if (res.status == 416) {
             // 没有权限

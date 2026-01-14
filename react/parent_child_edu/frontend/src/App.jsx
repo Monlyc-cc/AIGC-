@@ -4,10 +4,18 @@ import './utils/rem.js'
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
 import Home from './pages/Home.jsx'
+import ResetPassword from './pages/ResetPassword.jsx'
 
 import './styles/app.less'
 const AuthPage = () => {
   const [flag, setFlag] = useState(true)
+  const [account, setAccount] = useState('')
+  const [password, setPassword] = useState('')
+  const register_to_login = (flag, account, password) => {
+    setFlag(flag)
+    setAccount(account)
+    setPassword(password)
+  }
   return (
     <div className='app-root'>
       <div className="cartoon-bg"></div>
@@ -30,7 +38,10 @@ const AuthPage = () => {
             </div>
           </div>
           {/*登录模块*/}
-          {flag ? <Login /> : <Register />}
+          {flag ? <Login user={{
+            account,
+            password
+          }} /> : <Register register_to_login={register_to_login} />}
           <div className="social-login">
             <div className="divider">
               <div className="divider-line"></div>
@@ -61,9 +72,13 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path='' element={<Navigate to='/login' replace />}></Route>
         <Route path='/home' element={<Home />}></Route>
-
         <Route path='/login' element={<AuthPage />}></Route>
+        <Route path='/RsetPassword' element={<ResetPassword />}></Route>
+
+
+
       </Routes>
     </BrowserRouter>
 

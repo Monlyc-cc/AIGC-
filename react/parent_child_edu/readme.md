@@ -15,7 +15,7 @@
 
  5. ajax 错误统一处理:
     - npm install axios 按照axios替代fetch
-    - axios 能够拦截前端后端的请求与响应，并修改请求体与返回体,但是不能够绝对请求与响应是否发送，而是再每一次预处理一下
+    - axios 能够拦截前端后端的请求与响应，并修改请求体与返回体,但是不能够决定请求与响应是否发送，而是再每一次预处理一下
     二次封装axios
 6. 逻辑错误与程序错误
 
@@ -36,27 +36,28 @@
 
  # 服务端
 
- - 定义多个接口：
- 1. npm i koa-router 安装路由，用来分门别类的定义后端接口地址
- 2. 后端开发准则 
- - 代码分层
-    1. 路由层,声明路由接口
-    2. 控制层,接口的具体实现（当前端请求该借口，后端的响应逻辑）
-    3. 模板层，将响应逻辑中 与 数据库 打交道的代码
+ - 定义登录接口：
+    1. npm i koa-router 安装路由，用来分门别类的定义后端接口地址
+    2. 后端开发准则 
+    - 代码分层
+        1. 路由层,声明路由接口
+        2. 控制层,接口的具体实现（当前端请求该借口，后端的响应逻辑）
+        3. 模板层，将响应逻辑中 与 数据库 打交道的代码
 
-3. npm i koa-bodyparser 辅助koa解析 post 请求体中的参数
+    3. npm i koa-bodyparser 辅助koa解析 post 请求体中的参数
 
 
-4. js中访问 数据库
+    4. js中访问 数据库
     - npm install --save mysql2 安装mysql包，访问mysql数据库 （用法看文档）
     -
-5. npm install bcrypt 通过bcrtpt.js 对密码进行加密解密
+    5. npm install bcrypt 通过bcrtpt.js 对密码进行加密解密
 
 
-6. token 令牌 -- 前端登录成功，后端生成一个 token 令牌，并返回给前端， 前端访问需要权限的数据时，将令牌发到后端验证
+    6. token 令牌 -- 前端登录成功，后端生成一个 token 令牌，并返回给前端， 前端访问需要权限的数据时，将令牌发到后端验证
 
-7. token令牌的生成  npm i jsonwebtoken    const token = jwt.sign({id:res.id,phone:res.account }, 'shhhhh',{expiresIn:'7d'});
-
+    7. token令牌的生成  npm i jsonwebtoken    const token = jwt.sign({id:res.id,phone:res.account }, 'shhhhh',{expiresIn:'7d'});
+ - 定义验证码接口：
+    1. 
 # 跨域
 https://42.245.43.1：8080/home
 协议         域名     端口  路径
@@ -81,3 +82,11 @@ https://42.245.43.1：8080/home
     - 于是可以在前端定一个中转的后端，得到服务器端的数据,再传回前端，绕开了跨域问题
 
 - 同源策略在浏览器上， 后端与后端之间访问不存在跨域
+
+
+
+
+
+
+# 认识
+1. .svg: 一种特殊的图片格式， 用代码来描述，比传统图片加载更快

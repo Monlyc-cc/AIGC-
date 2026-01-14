@@ -25,7 +25,7 @@ router.get('/test', (ctx) => {
 //让app 讲router中定义的回调函数 全都use掉
 
 app.use(cors({
-    origin() {
+    origin() {//处理跨域 
         return "http://localhost:5173";
         },
     }))

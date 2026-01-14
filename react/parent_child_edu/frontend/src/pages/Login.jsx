@@ -3,10 +3,10 @@ import '../styles/login.less'
 import { Toast } from 'antd-mobile'
 import axios from '../http'
 import { useNavigate} from 'react-router-dom'
-export default function login() {
+export default function login({user}) {
   const [loading, setLoding] = useState(false)
-  const [account, setAccount] = useState('18970173593')
-  const [password, setPassword] = useState('123')
+  const [account, setAccount] = useState(user.account)
+  const [password, setPassword] = useState(user.password)
   const navigate=useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault()//阻止默认行为
@@ -78,7 +78,7 @@ export default function login() {
         }} value={password} placeholder='请输入密码' className='auth-form__input' />
       </div>
       <div className="auth-form__forgot-wrapper">
-        <a href="#" className='auth-form__forget'>忘记密码?</a>
+        <a href="/RsetPassword" className='auth-form__forget'>忘记密码?</a>
       </div>
       <button disabled={loading} type='submit' className='auth-form__submit'>{loading ? '登录中...' : '登录'}</button>
     </form>

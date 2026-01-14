@@ -1,1 +1,1 @@
-console.log('abvc'[2])
+console.log('a'.charCodeAt());
