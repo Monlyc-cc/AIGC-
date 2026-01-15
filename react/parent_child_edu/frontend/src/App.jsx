@@ -9,6 +9,7 @@ import Home from './pages/Home.jsx'
 import AI from './pages/AI.jsx'
 import Mine from './pages/Mine.jsx'
 import './styles/app.less'
+import Recognition from './pages/Recognition.jsx'
 const AuthPage = () => {
   const [flag, setFlag] = useState(true)
   const [account, setAccount] = useState('')
@@ -82,9 +83,9 @@ export default function App() {
           <Route path='home' element={<Home />}></Route>
           <Route path='ai' element={<AI />}></Route>
           <Route path='mine' element={<Mine />}></Route>
+          <Route path='recognition' element={<Recognition />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
-
   )
 }

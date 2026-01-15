@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import '../styles/login.less'
 import { Toast } from 'antd-mobile'
 import axios from '../http'
-import { useNavigate} from 'react-router-dom'
-export default function login({user}) {
+import { useNavigate } from 'react-router-dom'
+export default function login({ user }) {
   const [loading, setLoding] = useState(false)
   const [account, setAccount] = useState(user.account)
   const [password, setPassword] = useState(user.password)
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault()//阻止默认行为
     setLoding(true)
@@ -31,37 +31,39 @@ export default function login({user}) {
 
     // 像后端发请求
     const url = '/api/auth/login';
-    
-      const res = await axios.post(url,{
-      account,
-      password
-    })
-    const data=res .data;
-    console.log(data)
-    localStorage.setItem('token',data.token)
-
-    // const res = await fetch(url, {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },// 请求头是对象
-    //   body: JSON.stringify({ account, password }) //请求体必须是字符串
-    // })
-    // const data = await res.json()
-
-    if (data.token) {
-      Toast.show({
-        icon: 'success',
-        content: '登录成功'
+    try {
+      const res = await axios.post(url, {
+        account,
+        password
       })
-    }
-    else {
-      Toast.show({
-        icon: 'fail',
-        content: '账户或密码错误'
-      })
+      const data = res.data;
+      console.log(data)
+      localStorage.setItem('token', data.token)
+
+      // const res = await fetch(url, {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },// 请求头是对象
+      //   body: JSON.stringify({ account, password }) //请求体必须是字符串
+      // })
+      // const data = await res.json()
+
+      if (data.token) {
+        Toast.show({
+          icon: 'success',
+          content: '登录成功'
+        })
+      }
+      else {
+        Toast.show({
+          icon: 'fail',
+          content: '账户或密码错误'
+        })
+      }
+      navigate('../layout')
+    } catch (err) {
+      console.log(err)
     }
     setLoding(false)
-    navigate('/home')
-
   }
   return (
     <form className='auth-form' onSubmit={handleSubmit} >
