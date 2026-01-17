@@ -15,5 +15,6 @@ router.get('/captcha',getCaptcha)
 // 注册接口
 router.post('/register',register)
 
-
 module.exports=router
+
+//定义路由接口并抛出

@@ -2,23 +2,26 @@ import React, { useRef } from 'react'
 import './index.less'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react';
+
 export default function Index({
   theme = 'default',
-  onRecongnition
+  onRecongnition,
+  recognitionResult,
+  children
 }) {
 
 
   const [slectedImage, setSlectedImage] = useState(null)
   const navigate = useNavigate()
   const inputRef = useRef(null)
-  
+
   // 清除图片预览
   const handleClear = () => {
     setSlectedImage(null)
     inputRef.current.value = null
   }
   // 本地上传图片并预览
-  const handleImageUpload = (e) => {
+  const handleImageUpload = async (e) => {
 
     const file = e.target.files[0]
     if (file) {
@@ -26,9 +29,10 @@ export default function Index({
       const imageUrl = URL.createObjectURL(file)
       // 将url 传入
       setSlectedImage(imageUrl)
-      console.log(imageUrl)
       // ai 识别
-      // onRecongnition(file)
+      const res = await onRecongnition(file)
+
+
     }
   }
   // 主题颜色配置
@@ -97,6 +101,12 @@ export default function Index({
             display: 'none'
           }} type="file" accept='image/*' ref={inputRef} onChange={handleImageUpload} />
         </section>
+
+        {
+          (
+            children
+          )
+        }
       </main>
     </div>
   )

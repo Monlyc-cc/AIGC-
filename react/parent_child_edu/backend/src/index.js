@@ -2,7 +2,9 @@ const Koa = require('koa')
 const Router = require('koa-router')
 const bodyParser = require('koa-bodyparser')
 const authRouters = require('./routes/authRouter.js')
+const cozeRouters=require('./routes/cozeApi.js')
 const cors = require('@koa/cors');
+
 // 创建koa实例对象
 const app = new Koa()
 
@@ -32,6 +34,7 @@ app.use(cors({
     .use(bodyParser())
     .use(router.routes(), router.allowedMethods())
     .use(authRouters.routes(), authRouters.allowedMethods())
+    .use(cozeRouters.routes(),authRouters.allowedMethods())
 
 //呗appuse 的函数体 
 
