@@ -3,7 +3,7 @@ import '../styles/Home.less'
 import HomeCard from '../components/HomeCard';
 export default function Home() {
   const quickEntries = [
-    { title: '拍照识实物', desc: '秒识身边物品，讲解用途与安全提示', tag: 'AI 识别' ,path:'recognition'},
+    { title: '拍照识物', desc: '秒识身边物品，讲解用途与安全提示', tag: 'AI 识别' ,path:'recognition'},
     { title: '拍照学单词', desc: '看图记单词，语音跟读巩固记忆', tag: '英语', path:'learn-words'},
     { title: '古诗词天地', desc: '每日一诗，图文+朗读，助力语文启蒙', tag: '国学',path:'learn-poem' },
     { title: '亲子成长任务', desc: '每日 3 个小目标，亲子打卡养习惯', tag: '习惯养成',path:'habit' },

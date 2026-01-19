@@ -1,4 +1,4 @@
-const { findUserByAccount, createUser } = require('../models/userModel.js')
+const { findUserByAccount, createUser, findUserById } = require('../models/userModel.js')
 const { generateCaptcha, verifyCaptcha } = require('../utiles/captcha.js')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
@@ -141,8 +141,52 @@ async function register(ctx) {
 
 }
 
+async function getUserInfo(ctx) {
+    console.log('获取用户信息')
+    const id = ctx.userId
+    try {
+        const res = await findUserById(id)
+        console.log(res);
+
+        if (!res) {
+            ctx.status = 400
+            ctx.body = {
+                code: 0,
+                message: '用户不存在'
+            }
+            return
+        }
+        else
+        {
+            const data={
+                code:1,
+                id:res.id,
+                nickname:res.nickname,
+                account:res.account,
+                avatar:res.avatar,
+                create_time:res.create_time
+            }
+            ctx.body=data
+            console.log(data);
+            
+        }
+    }
+    catch (error) {
+        ctx.status = 500
+        ctx.body = {
+            code: 0,
+            message: '数据库连接失败'
+        }
+        console.log(error);
+    }
+
+
+}
+
+
 module.exports = {
     login,
     register,
-    getCaptcha
+    getCaptcha,
+    getUserInfo,
 }

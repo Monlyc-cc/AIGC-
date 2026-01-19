@@ -10,6 +10,8 @@ import AI from './pages/AI.jsx'
 import Mine from './pages/Mine.jsx'
 import './styles/app.less'
 import Recognition from './pages/Recognition.jsx'
+import LearnPoem from './pages/LearnPoem.jsx'
+import AccountSetting from './pages/AccountSetting.jsx'
 const AuthPage = () => {
   const [flag, setFlag] = useState(true)
   const [account, setAccount] = useState('')
@@ -75,7 +77,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='' element={<Navigate to='layout' replace />}></Route>
+        <Route path='' element={<Navigate to='login' replace />}></Route>
         <Route path='login' element={<AuthPage />}></Route>
         <Route path='RsetPassword' element={<ResetPassword />}></Route>
         <Route path='layout' element={<Layout />}>
@@ -84,7 +86,9 @@ export default function App() {
           <Route path='ai' element={<AI />}></Route>
           <Route path='mine' element={<Mine />}></Route>
           <Route path='recognition' element={<Recognition />}></Route>
+          <Route path='learn-words' element={<LearnPoem/>}></Route>
         </Route>
+        <Route path='account-setting' element={<AccountSetting />}></Route>
       </Routes>
     </BrowserRouter>
   )

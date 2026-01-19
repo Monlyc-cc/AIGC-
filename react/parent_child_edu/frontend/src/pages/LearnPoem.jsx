@@ -4,8 +4,7 @@ import axios from 'axios'
 import { Toast } from 'antd-mobile';
 import { useState } from 'react';
 import RecognitionResult from '../components/recognitionResult/RecognitionResult'
-
-export default function Recognition() {
+export default function LearnPoem() {
     const [recognitionResult, setRecognitionResult] = useState(null)
     const RealonRecongnition = async (file) => {
         //http 请求只能传输字符/字节
@@ -36,7 +35,6 @@ export default function Recognition() {
             })
 
             //卸载原组件子组件状态
-            setRecognitionResult(null)
             setRecognitionResult(res.data.data)
             // 关闭所有弹框
             Toast.clear()
@@ -52,7 +50,7 @@ export default function Recognition() {
 
     }
     return (
-        <ImageCaptureAndProcess onRecongnition={RealonRecongnition} title={'AI 拍照识物'} >
+        <ImageCaptureAndProcess onRecongnition={RealonRecongnition} title={'AI 拍照学单词'} >
             {recognitionResult && < RecognitionResult recognitionResult={recognitionResult}></ RecognitionResult>}
         </ImageCaptureAndProcess>
     )

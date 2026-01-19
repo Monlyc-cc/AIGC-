@@ -6,8 +6,8 @@ import { useState } from 'react';
 export default function Index({
   theme = 'default',
   onRecongnition,
-  recognitionResult,
-  children
+  children,
+  title
 }) {
 
 
@@ -60,7 +60,7 @@ export default function Index({
         <button onClick={() => { navigate('..') }} className='image-capture-header__back'>
           <i className='iconfont icon-fanhui'></i>
         </button>
-        <h1>AI 拍照识物</h1>
+        <h1>{title}</h1>
         <div className='image-capture-header__placeholder'></div>
       </header>
       <main className='image-capture-main'>

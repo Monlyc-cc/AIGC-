@@ -17,7 +17,7 @@ async function createUser({ account, password_hash, nickname }) {
         console.log(res);
         if (res.affectedRows) {
             return {
-                id:insertId,
+                id: insertId,
                 account
             }
 
@@ -27,7 +27,18 @@ async function createUser({ account, password_hash, nickname }) {
         console.log(err);
     }
 }
+
+async function findUserById(id) {
+    try {
+        const [rows] = await db.query(`SELECT *  FROM users WHERE id='${id}' `);
+        return rows[0]
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
 module.exports = {
     findUserByAccount,
-    createUser
+    createUser,
+    findUserById
 }
