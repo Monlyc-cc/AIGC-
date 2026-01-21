@@ -28,7 +28,6 @@ export default function Recognition() {
                 }
             )
 
-
             const url = '/api/coze/recognition'
             //向工作流发请求， 因为前端直接向后端发请求，会导致跨域问题，只能有自己的后端对外部API进行访问
             const res = await axios.post(url, {

@@ -11,7 +11,6 @@ import Mine from './pages/Mine.jsx'
 import './styles/app.less'
 import Recognition from './pages/Recognition.jsx'
 import LearnPoem from './pages/LearnPoem.jsx'
-import AccountSetting from './pages/AccountSetting.jsx'
 const AuthPage = () => {
   const [flag, setFlag] = useState(true)
   const [account, setAccount] = useState('')
@@ -88,7 +87,6 @@ export default function App() {
           <Route path='recognition' element={<Recognition />}></Route>
           <Route path='learn-words' element={<LearnPoem/>}></Route>
         </Route>
-        <Route path='account-setting' element={<AccountSetting />}></Route>
       </Routes>
     </BrowserRouter>
   )

@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
 import '../styles/layout.less'
-import { Outlet,useNavigate } from 'react-router-dom'
-
+import { Outlet, useNavigate } from 'react-router-dom'
+import 'antd-mobile/es/global'
+const tabs = [
+    { id: 'home', name: '首页', icon: "icon-shouye", path: 'home' },
+    { id: 'ai', name: 'AI小伙伴', icon: "icon-bot", path: 'ai' ,isHightLighted:true},
+    { id: 'mine', name: '我的', icon: "icon-wode", path: 'mine' }
+]
 export default function Layout() {
-    const [activeTab,setActiveTab]=useState('home')
-    const navigate=useNavigate()
+    const [activeTab, setActiveTab] = useState(() => {
+        //记录当前状态
+        return window.location.pathname.split('/')[2]||'home'
+    })
+    const navigate = useNavigate()
     //布局页面
-    const tabs = [
-        { id: 'home', name: '首页', icon: "icon-shouye",path:'home' },
-        { id: 'ai', name: 'AI小伙伴', icon: "icon-bot" ,isHightLighted:true,path:'ai'},
-        { id: 'mine', name: '我的', icon: "icon-wode",path:'mine' }
-    ]
+
 
     return (
         <div className='layout'>
@@ -21,10 +25,10 @@ export default function Layout() {
                 {
                     tabs.map((tab) => {
                         return (
-                            <div onClick={()=>{
+                            <div onClick={() => {
                                 setActiveTab(tab.id)
                                 navigate(`${tab.path}`)
-                            }} key={tab.id} className={`bottom-nav__item ${tab.isHightLighted?'hightLighted':''} ${activeTab===tab.id?'active':''}` }> {/* ✅ 修正 buttom → bottom */}
+                            }} key={tab.id} className={`bottom-nav__item ${tab.isHightLighted ? 'hightLighted' : ''} ${activeTab === tab.id ? 'active' : ''}`}> {/* ✅ 修正 buttom → bottom */}
                                 <div className="bottom-nav__icon-container"> {/* ✅ 修正 */}
                                     <i className={`iconfont ${tab.icon}`} ></i>
                                 </div>
