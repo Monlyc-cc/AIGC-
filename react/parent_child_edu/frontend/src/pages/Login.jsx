@@ -8,6 +8,8 @@ export default function login({ user }) {
   const [account, setAccount] = useState(user.account)
   const [password, setPassword] = useState(user.password)
   const navigate = useNavigate();
+  const url = '/api/auth/login';
+
   const handleSubmit = async (e) => {
     e.preventDefault()//阻止默认行为
     setLoding(true)
@@ -30,7 +32,6 @@ export default function login({ user }) {
     })
 
     // 像后端发请求
-    const url = '/api/auth/login';
     try {
       const res = await axios.post(url, {
         account,

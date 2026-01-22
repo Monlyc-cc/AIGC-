@@ -1,7 +1,9 @@
 import React from 'react'
 import '../styles/aiPage.less'
+import { useNavigate } from 'react-router-dom'
 
 export default function AIPage() {
+  const navigate=useNavigate()
   return (
     <div className='ai-page-root'>
       <header className='ai-page-header'>
@@ -10,7 +12,9 @@ export default function AIPage() {
       </header>
 
       <section className='ai-page-content'>
-        <div className="ai-feature-card">
+        <div onClick={()=>{
+          navigate('/ai-chat')
+        }} className="ai-feature-card">
           <i className="iconfont icon-robot-2-fill ai-feature-icon "></i>
           <h3>智能对话</h3>
           <p>AI陪孩子聊天，解答各种问题</p>

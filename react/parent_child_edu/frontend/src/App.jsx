@@ -11,6 +11,7 @@ import Mine from './pages/Mine.jsx'
 import './styles/app.less'
 import Recognition from './pages/Recognition.jsx'
 import LearnPoem from './pages/LearnPoem.jsx'
+import AIChat from './pages/AIChat.jsx'
 const AuthPage = () => {
   const [flag, setFlag] = useState(true)
   const [account, setAccount] = useState('')
@@ -85,8 +86,9 @@ export default function App() {
           <Route path='ai' element={<AI />}></Route>
           <Route path='mine' element={<Mine />}></Route>
           <Route path='recognition' element={<Recognition />}></Route>
-          <Route path='learn-words' element={<LearnPoem/>}></Route>
+          <Route path='learn-words' element={<LearnPoem />}></Route>
         </Route>
+        <Route path='ai-chat' element={<AIChat />}></Route>
       </Routes>
     </BrowserRouter>
   )

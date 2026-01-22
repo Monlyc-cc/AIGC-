@@ -1,19 +1,21 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import './index.less'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react';
-
+import { CenterPopup, Popup, Image } from 'antd-mobile'
+import MyWebcam from '../MyWebcam'
 export default function Index({
   theme = 'default',
   onRecongnition,
   children,
-  title
+  title,
 }) {
 
 
   const [slectedImage, setSlectedImage] = useState(null)
   const navigate = useNavigate()
   const inputRef = useRef(null)
+  const [visible, setVisible] = useState(false)
 
   // 清除图片预览
   const handleClear = () => {
@@ -26,11 +28,17 @@ export default function Index({
     const file = e.target.files[0]
     if (file) {
       //将file 对象转换为url
-      const imageUrl = URL.createObjectURL(file)
+      const dataUrl = await new Promise((resolve, reject) => {
+        const reader = new FileReader(); // 浏览器原生对象，自带的
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (err) => reject(err)
+      });
       // 将url 传入
-      setSlectedImage(imageUrl)
-      // ai 识别
-      const res = await onRecongnition(file)
+      setSlectedImage(dataUrl)
+      console.log(dataUrl);
+
+
 
 
     }
@@ -54,6 +62,22 @@ export default function Index({
   };
   const currentTheme = themeConfig[theme] || themeConfig.default
 
+
+  // 设置action： 拍照
+  const handleTakePhoto = () => {
+    console.log('打开');
+    setVisible(true)
+  }
+  useEffect(() => {
+    if (slectedImage!=null) {
+      (async () => {
+        // ai 识别
+        const res = await onRecongnition(slectedImage)
+        console.log(res);
+        
+      })()
+    }
+  }, [slectedImage])
   return (
     <div className='image-capture-root'>
       <header className='image-capture-header'>
@@ -72,7 +96,7 @@ export default function Index({
           {
             slectedImage ? (
               <div className="image-capture-preview__image-container">
-                <img src={slectedImage} className='image-capture-preview__image' />
+                <Image src={slectedImage} className='image-capture-preview__image' />
                 <button onClick={handleClear} className='image-capture-preview__clear'>
                   <i className='iconfont icon-close'></i>
                 </button>
@@ -89,6 +113,7 @@ export default function Index({
           <button
             className='image-capture-btn image-capture-btn--primary'
             style={{ backgroundColor: currentTheme.primary }}
+            onClick={handleTakePhoto}
           >
             <i className='iconfont icon-xiangji'></i>
             拍照
@@ -108,6 +133,23 @@ export default function Index({
           )
         }
       </main>
+      <Popup position='right'
+        visible={visible}
+        onClose={() => {
+          setVisible(false)
+        }}>
+        <div style={{
+          width: '100vw',
+          height: '100vh',
+        }}>
+          <MyWebcam
+            back={() => {
+              setVisible(false)
+            }}
+            setSlectedImage={setSlectedImage}
+          ></MyWebcam>
+        </div>
+      </Popup>
     </div>
   )
 }
