@@ -74,10 +74,10 @@ export default function AIChat() {
             const res = await axios.post(url, {
                 message: content
             })
-            setIsLoading(false)
-            const aiResponse=messageRef.current.CreateMessage('ai', res.data.message, new Date())
+            const aiResponse = messageRef.current.CreateMessage('ai', res.data.message, new Date())
             messageRef.current.addMessage(aiResponse)
-            setFlag(flag + 1)
+            setIsLoading(false)
+
             console.log(res);
 
         } catch (err) {

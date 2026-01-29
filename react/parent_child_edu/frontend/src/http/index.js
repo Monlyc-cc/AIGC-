@@ -2,7 +2,7 @@ import { Toast } from "antd-mobile";
 import axios from "axios";
 
 axios.timeout = 5000 // 超时时间
-axios.defaults.baseURL = 'http://localhost:3000' //配置axios默认基础路径
+axios.defaults.baseURL = 'http://47.97.182.219:3000' //配置axios默认基础路径
 axios.defaults.headers.post['Content-Type'] = 'application/json' //设置axios默认请求头
 
 

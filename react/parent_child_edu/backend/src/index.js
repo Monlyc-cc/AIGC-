@@ -2,9 +2,9 @@ const Koa = require('koa')
 const Router = require('koa-router')
 const bodyParser = require('koa-bodyparser')
 const authRouters = require('./routes/authRouter.js')
-const cozeRouters=require('./routes/cozeApi.js')
-const mineRouters=require('./routes/mineRouer.js')
-const deepseekRouters=require('./routes/deepseek-api.js')
+const cozeRouters = require('./routes/cozeApi.js')
+const mineRouters = require('./routes/mineRouer.js')
+const deepseekRouters = require('./routes/deepseek-api.js')
 const cors = require('@koa/cors');
 
 // 创建koa实例对象
@@ -28,17 +28,13 @@ router.get('/test', (ctx) => {
 
 //让app 讲router中定义的回调函数 全都use掉
 
-app.use(cors({
-    origin() {//处理跨域 
-        return "http://localhost:5173";
-        },
-    }))
+app.use(cors())
     .use(bodyParser())
     .use(router.routes(), router.allowedMethods())
     .use(authRouters.routes(), authRouters.allowedMethods())
-    .use(cozeRouters.routes(),authRouters.allowedMethods())
-    .use(mineRouters.routes(),mineRouters.allowedMethods())
-    .use(deepseekRouters.routes(),deepseekRouters.allowedMethods())
+    .use(cozeRouters.routes(), authRouters.allowedMethods())
+    .use(mineRouters.routes(), mineRouters.allowedMethods())
+    .use(deepseekRouters.routes(), deepseekRouters.allowedMethods())
 
 //呗appuse 的函数体 
 

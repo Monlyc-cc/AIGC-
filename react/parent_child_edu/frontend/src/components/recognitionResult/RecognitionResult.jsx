@@ -11,7 +11,7 @@ export default function RecognitionResult({ recognitionResult }) {
     const safety = recognitionResult?.safety
     const handleAudioPlay = () => {
         setIsPlaying(!isPlaying)
-        if (isPlaying) {
+        if (!isPlaying) {
             Refaudio.current?.play()
         }
         else {

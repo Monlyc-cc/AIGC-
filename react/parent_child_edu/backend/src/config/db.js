@@ -3,9 +3,9 @@ const mysql = require('mysql2/promise');
 const pool = mysql.createPool({
   host: 'localhost',      // ✅ 不用改！保持localhost，不用改127.0.0.1
   port: 3306,             // ✅ 不用改！默认端口
-  user: 'root',           // ✅ 不用改！还是root，不用新建dev
+  user: 'parentChildEdu',           // ✅ 不用改！还是root，不用新建dev
   password: '123456789',    // ✅ 不用改！还是你原来的密码，绝对正确
-  database: 'parent_child_edu', // ✅ 你的项目库名，不用改
+  database: 'parentChildEdu', // ✅ 你的项目库名，不用改
   charset: 'utf8mb4',
   waitForConnections: true,
   connectionLimit: 10,
