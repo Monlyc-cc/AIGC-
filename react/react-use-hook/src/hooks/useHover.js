@@ -1,9 +1,10 @@
 import React, { useEffect, useState, cloneElement } from 'react'
 //react 中 克隆dom接口
 export default function useHover(element) {
-    const [reF,setReF]=useState()
+    const [reF, setReF] = useState()
     const [hovered, setHovered] = useState(false)
-    let hoveralbe
+    let hoveralbe = reF
+
     useEffect(() => {
         const onMouseEnter = (originOnMouseEnter) => {
             return () => {
@@ -18,11 +19,12 @@ export default function useHover(element) {
             }
         }
 
-        hoveralbe = cloneElement(element(hovered), {
+        hoveralbe.current = cloneElement(element(hovered), {
             onMouseEnter: onMouseEnter(element.this.props.onMouseEnter),
             onMouseLeave: onMouseLeave(element.props.onMouseLeave),
         })
         setReF()
     }, [element])
-    return [hoveralbe.hovered]
+
+    return hoveralbe.current.hovered
 }

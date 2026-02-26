@@ -55,7 +55,7 @@ export default function AIChat() {
     const handleSendMessage = async () => {
         //ref直接获得输入框的内容
         const content = InputRef.current.value.trim()
-        if (!content) {
+        if (!content) {0
             // 内容为空则不继续后续逻辑
             return
         }
