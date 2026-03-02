@@ -9,7 +9,7 @@ export default function App() {
             <h1>hello world</h1>
             <p>Count: {count}</p>
             <button onClick={() => setCount(count + 1)}>
-                count is {count}
+                tick me {count}
             </button>
         </div>
     )

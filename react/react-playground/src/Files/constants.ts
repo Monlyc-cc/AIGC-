@@ -7,3 +7,4 @@ export const LANGUAGE_MAP = {
     'json': 'json',
 }
 export const ENTRY_FILE_NAME = 'main.tsx'
+export const IMPORT_MAP_FILE_NAME = 'import_map.json'

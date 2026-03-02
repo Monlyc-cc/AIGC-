@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            display: none;/* 隐藏元素，不占用文档流 ,直接从页面消失 ，不可触发事件*/
+            visibility: hidden; /*隐藏元素,占用文档流,只是看不见，同时不可触发事件*/
+            opacity: 0; /*透明度设置，占据文档流 ，可以触发事件*/
+            transform: scale(0); /*缩放设置，占据文档流 ，可以绑定触发事件, 但是缩放到0时，因为容器过小无法点击，约定于不可触发*/
+            clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%); /*裁剪容器 ， 裁剪为0时，不可触发事件*/
+            
+            position: absolute;/*利用定位将容器移到可视区域之外*/
+            left: 9999999px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>
