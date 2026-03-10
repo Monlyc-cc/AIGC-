@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>我是index2.html</h2>
+    <script>
+        window.onmessage = (e) => {
+            console.log(e.data);
+            setTimeout(() => {
+                e.source.postMessage('我是index2.html','http://127.0.0.1:64278/%E8%B7%A8%E5%9F%9F/postMessage/index.html',e.origin);
+            }, 3000);
+        }
+        
+    </script>
+</body>
+
+</html>

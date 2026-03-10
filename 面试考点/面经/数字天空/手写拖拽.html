@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {}
+
+        .left {
+            position: absolute;
+            left: 0;
+            width: 300px;
+            min-width: 200px;
+            height: 200px;
+            background-color: green;
+        }
+
+        .right {
+            position: absolute;
+            left: 300px;
+            width: calc(100vh-300px);
+            min-width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        .line {
+            position: absolute;
+            left: 0px;
+            height: 100%;
+            width: 3px;
+            background-color: #000;
+        }
+
+        .line:hover {
+            background-color: rgb(0, 0, 255);
+            cursor: col-resize;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="box">
+        <div class="left"></div>
+        <div class="right">
+            <div class="line" onmousedown={}></div>
+
+        </div>
+    </div>
+</body>
+<script>
+    const line = document.querySelector('.line');
+    const box = document.querySelector('.box');
+    const left = document.querySelector('.left');
+    const right = document.querySelector('.right');
+
+    let isDown = false
+    line.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        isDown = true
+    })
+    line.addEventListener('mouseup', (e) => {
+        e.preventDefault();
+        isDown = false
+    })
+
+
+
+    box.addEventListener('mousemove', (e) => {
+        e.preventDefault();
+        console.log(isDown, e.pageX);
+
+        if (isDown) {
+            if (e.pageX > 200) {
+            
+                left.style.width = e.pageX + 'px'
+                right.style.left = e.pageX + 'px'
+                
+            }
+        }
+
+    })
+</script>
+
+</html>

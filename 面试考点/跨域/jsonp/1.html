@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function jsonp(url, cb) {
+            return new Promise((res, rej) => {
+                const script = document.createElement('script')
+                script.src = `${url}?cb=${cb}`
+                document.head.appendChild(script)
+
+
+                window[cb]=function(data){
+                    res(data)
+                }
+            })
+        }
+        jsonp('http://localhost:3000', 'callback').then(res => console.log(res))
+    </script>
+</head>
+
+<body>
+
+
+</body>
+
+</html>

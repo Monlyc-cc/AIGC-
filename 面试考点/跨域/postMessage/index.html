@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <H2>我是index.html</H2>
+    <iframe src="index2.html" id="iframe"></iframe>
+    <script>
+        const obj = {
+            name:'张三',
+            age:18
+        }
+
+
+        const iframe = document.getElementById('iframe');
+        iframe.onload=function(){
+               // 函数被ifream触发
+               this.contentWindow.postMessage(obj,'http://127.0.0.1:64278/%E8%B7%A8%E5%9F%9F/postMessage/index2.html');
+               window.onmessage = (e) => {
+                    console.log('二级页面传来消息:',e.data);
+               }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="button1">'张三'插入仓库</button>
+    <button class="button2">'张三' 从仓库删除</button>
+
+    <script>
+        // // localStorage 本地存储用法, 时效:永久
+        // const btn=document.querySelector('.button1')
+        // btn.addEventListener('click',()=>{
+        //     // 打开数据库
+        //     localStorage.setItem('name','张三')
+        //     console.log(localStorage.getItem('name'));
+
+        // })
+        // const btn2=document.querySelector('.button2')
+        // btn2.addEventListener('click',()=>{
+        //     // 打开数据库
+        //     localStorage.removeItem('name')
+        //     console.log(localStorage.getItem('name'));
+
+        // })
+
+
+
+        // // sessionStorage 会话存储用法, 时效:当前会话 ,会话关闭,则数据清空
+        // const btn3=document.querySelector('.button1')
+        // btn3.addEventListener('click',()=>{
+        //     // 打开数据库
+        //     sessionStorage.setItem('name','张三')
+
+        // })
+
+
+
+        // // cookie 存储用法, 时效:自定义, 可以设置过期时间
+        // // 浏览器每次请求,会自动携带cookie
+        // // 且cookie 只能由后端写
+        // const btn4=document.querySelector('.button1')
+        // btn4.addEventListener('click',()=>{
+        //     // 打开数据库
+        //     document.cookie='name=张三;expires=Fri, 31 Dec 2023 23:59:59 GMT'
+
+        // })
+
+
+
+        // indexedDB 数据库存储用法, 时效:自定义, 可以设置过期时间
+        // 浏览器每次请求,会自动携带cookie
+        // 且cookie 只能由后端写
+
+        // 核心修改：版本号改为 2，强制触发 onupgradeneeded
+const dbname = 'myDB';
+const dbversion = 2; // 必须比之前的版本号大（比如从1改为2）
+let db;
+
+// 封装初始化函数，确保表100%创建成功
+function initDB() {
+    return new Promise((resolve, reject) => {
+        // 先关闭可能存在的旧连接（避免连接冲突）
+        if (db) {
+            db.close();
+        }
+
+        const request = indexedDB.open(dbname, dbversion);
+
+        // 监听错误
+        request.onerror = (e) => {
+            reject(`数据库打开失败：${e.target.error.message}`);
+        };
+
+        // 监听版本升级/首次创建（核心：表创建逻辑写在这里）
+        request.onupgradeneeded = (e) => {
+            console.log('===== 触发 onupgradeneeded 事件（版本升级/首次创建）=====');
+            const dbInstance = e.target.result;
+            console.log('当前数据库版本：', dbInstance.version);
+            
+            // 无论是否存在，强制重建 people 表（确保创建成功）
+            if (dbInstance.objectStoreNames.contains('people')) {
+                console.log('发现旧的 people 表，先删除');
+                dbInstance.deleteObjectStore('people');
+            }
+
+            // 重点：创建表的核心代码
+            try {
+                const objectStore = dbInstance.createObjectStore('people', {
+                    keyPath: 'id',
+                    autoIncrement: true
+                });
+                // 创建索引
+                objectStore.createIndex('title', 'title', { unique: false });
+                console.log('✅ people 表创建成功！');
+                console.log('当前表列表：', Array.from(dbInstance.objectStoreNames));
+            } catch (err) {
+                reject(`创建表失败：${err.message}`);
+            }
+        };
+
+        // 监听成功
+        request.onsuccess = (e) => {
+            db = e.target.result;
+            console.log('===== 数据库连接成功 =====');
+            // 转换 DOMStringList 为普通数组，方便查看
+            const storeNames = Array.from(db.objectStoreNames);
+            console.log('当前数据库中的表列表：', storeNames);
+
+            // 验证表是否存在
+            if (storeNames.includes('people')) {
+                resolve(db);
+            } else {
+                reject('❌ people 表创建失败！表列表中无该表');
+            }
+        };
+    });
+}
+
+// 页面加载完成后执行初始化
+window.addEventListener('DOMContentLoaded', async () => {
+    try {
+        await initDB();
+        console.log('✅ 数据库初始化完成，可正常操作');
+
+        // 绑定按钮事件
+        const btn = document.querySelector('.button1');
+        if (btn) {
+            btn.addEventListener('click', () => {
+                if (!db) {
+                    alert('数据库未初始化，请刷新页面重试');
+                    return;
+                }
+
+                try {
+                    const transaction = db.transaction(['people'], 'readwrite');
+                    const objectStore = transaction.objectStore('people');
+                    const req = objectStore.add({
+                        title: '张三',
+                        content: 18,
+                        createTime: Date.now()
+                    });
+
+                    req.onsuccess = () => {
+                        console.log('✅ 数据插入成功，ID：', req.result);
+                        // 插入后验证数据
+                        const getReq = objectStore.get(req.result);
+                        getReq.onsuccess = () => {
+                            console.log('✅ 验证插入的数据：', getReq.result);
+                        };
+                    };
+                    req.onerror = (e) => console.error('❌ 插入失败：', e.target.error);
+                    transaction.oncomplete = () => console.log('✅ 事务完成');
+                    transaction.onerror = (e) => console.error('❌ 事务失败：', e.target.error);
+                } catch (err) {
+                    console.error('❌ 操作异常：', err);
+                }
+            });
+        } else {
+            console.warn('⚠️ 未找到 class 为 button1 的按钮');
+        }
+    } catch (err) {
+        console.error('❌ 初始化失败：', err);
+    }
+});
+
+    </script>
+</body>
+
+</html>

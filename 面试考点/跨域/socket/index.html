@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function myWebSocket(url,options){
+          return new Promise((resolve,reject) => {
+            const socket= new WebSocket(url); //建立socket对象
+            socket.onopen = () => {
+                // 跟服务端建立连接
+                socket.send(JSON.stringify(options));
+            }
+            socket.onmessage = (e) => {
+                // 接收服务端的消息
+                console.log(e.data.toString());
+                
+                resolve(JSON.parse(e.data.toString()));
+            }
+
+          })
+        }
+        const ws =  myWebSocket('ws://localhost:3000',{age:18}).then((res) => {
+            console.log(res);
+        })
+    </script>   
+</body>
+</html>
